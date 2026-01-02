@@ -2,6 +2,7 @@ from typing import List
 from core.types import FaceData
 import cv2
 
+
 class VideoVisualizer:
     def draw_results(self, frame, faces: List[FaceData]):
         # CHANGE 3: Iterate through the list

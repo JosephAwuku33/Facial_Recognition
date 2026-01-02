@@ -8,4 +8,4 @@ class FaceData:
 
     name: str
     location: Tuple[int, int, int, int]  # x, y, w, h
-    distance: float
+    distance: float # Euclidean distance from known face
