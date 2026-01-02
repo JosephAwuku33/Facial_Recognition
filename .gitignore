@@ -1,0 +1,15 @@
+deepface_env/
+env/
+venv/
+__pycache__/
+
+# Ignore the actual face data (Privacy!)
+dataset/
+encodings.pickle
+
+# Ignore IDE settings
+.vscode/
+
+# Ignore video files
+test_videos/
+*.mp4
