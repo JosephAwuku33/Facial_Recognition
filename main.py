@@ -18,10 +18,14 @@ def main():
     visualizer = VideoVisualizer()
 
     # 2. Setup Video
-    cap = cv2.VideoCapture(str(settings.VIDEO_SOURCE))
-    if not cap.isOpened():
-        print(f"[ERROR] Cannot open video: {settings.VIDEO_SOURCE}")
-        return
+    # cap = cv2.VideoCapture(str(settings.VIDEO_SOURCE))
+
+    # Use raw camera instead for now
+    cap = cv2.VideoCapture(0)
+
+    # if not cap.isOpened():
+    #     print(f"[ERROR] Cannot open video: {settings.VIDEO_SOURCE}")
+    #     return
 
     # Calculate FPS delay
     fps = cap.get(cv2.CAP_PROP_FPS) or 30
@@ -49,11 +53,11 @@ def main():
             if frame_count % settings.SKIP_FRAMES == 0:
                 ai_service.update_frame(frame)
 
-            # B. Get latest result from AI
-            result = ai_service.get_latest_result()
+            # B. Get latest result (List)
+            faces = ai_service.get_latest_results()
 
-            # C. Draw (Main Thread)
-            visualizer.draw_result(frame, result)
+            # C. Draw (Pass the list)
+            visualizer.draw_results(frame, faces)
 
             cv2.imshow("Modular Face Recognition", frame)
 
